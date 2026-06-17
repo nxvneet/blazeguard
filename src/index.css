@@ -1,0 +1,148 @@
+/* ===========================================================================
+   Blazeguard® — global styles
+   Design tokens lifted from the Sienna template (home-v2-construction):
+   warm near-black palette, brunswick green accent, silver/beige neutrals.
+   Display serif: Fraunces (free stand-in for the template's "Coconat").
+   Body sans: Questrial (same as the template).
+   =========================================================================== */
+
+:root {
+  /* palette — base warm-black carried from the template, accents sampled
+     directly from the Blazeguard logo (fire gradient + ink). */
+  --licorice: #16110e;          /* primary warm near-black background */
+  --licorice-darker: #070504;   /* darkest sections */
+  --licorice-lighter: #27221f;  /* raised cards on dark */
+  --silver: #c1bbaf;            /* warm beige neutral */
+  --bone: #ebe3dd;              /* light section background */
+  --bone-2: #eae6e4;
+  --border-1: #7a7776;
+  --border-2: #39332e;
+
+  /* Blazeguard brand (from the logo) */
+  --ember-red: #cb4b40;         /* leftmost fire block */
+  --ember: #cf5d3c;             /* primary orange accent */
+  --amber: #de9044;             /* amber fire block */
+  --gold: #e6ac5a;              /* lightest fire block */
+  --ink: #1a1919;               /* logo "Guard." block */
+  --accent: var(--ember);       /* site accent = brand orange */
+  --fire-gradient: linear-gradient(95deg, var(--ember-red), var(--ember) 45%, var(--amber) 75%, var(--gold));
+
+  /* legacy alias so existing references resolve to the brand accent */
+  --brunswick: var(--ember);
+
+  --text-on-dark: #ebe3dd;
+  --text-on-dark-muted: #aaa49c;
+  --text-on-light: #16110e;
+  --text-on-light-muted: #5d5650;
+
+  /* type */
+  --serif: 'Fraunces', 'Times New Roman', serif;
+  --sans: 'Questrial', Arial, sans-serif;
+
+  /* rhythm */
+  --section-pad: clamp(80px, 12vw, 200px);
+  --container: 1280px;
+  --radius: 28px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  margin: 0;
+  background: var(--licorice);
+  color: var(--text-on-dark);
+  font-family: var(--sans);
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.08;
+  margin: 0;
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: clamp(20px, 5vw, 60px);
+  padding-right: clamp(20px, 5vw, 60px);
+}
+
+.section { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+
+.eyebrow {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 12px;
+  color: var(--silver);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.eyebrow::before {
+  content: "";
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  padding: 16px 30px;
+  border-radius: 100px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background .35s ease, color .35s ease, transform .35s ease, border-color .35s ease;
+}
+.btn-light { background: var(--bone); color: var(--licorice); }
+.btn-light:hover { background: var(--accent); color: #fff; transform: translateY(-2px); }
+
+/* primary brand button — fire gradient lifted from the logo */
+.btn-fire {
+  background: var(--fire-gradient);
+  background-size: 160% 160%;
+  color: #fff;
+  border: none;
+  box-shadow: 0 10px 30px -12px rgba(207, 93, 60, 0.7);
+  transition: background-position .6s ease, transform .35s ease, box-shadow .35s ease;
+}
+.btn-fire:hover { background-position: 100% 0; transform: translateY(-2px); box-shadow: 0 16px 40px -12px rgba(207, 93, 60, 0.85); }
+.btn-outline { border-color: var(--border-1); color: var(--text-on-dark); }
+.btn-outline:hover { background: var(--bone); color: var(--licorice); }
+.btn-dark { background: var(--licorice); color: var(--bone); }
+.btn-dark:hover { background: var(--brunswick); transform: translateY(-2px); }
+
+.btn .arrow { transition: transform .35s ease; }
+.btn:hover .arrow { transform: translate(4px, -4px); }
+
+/* generic helpers */
+.dark-section { background: var(--licorice-darker); }
+.bone-section { background: var(--bone); color: var(--text-on-light); }
+.rounded-top { border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); }
+.rounded { border-radius: var(--radius); }
+
+::selection { background: var(--ember); color: #fff; }
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--licorice-darker); }
+::-webkit-scrollbar-thumb { background: var(--border-2); border-radius: 10px; }

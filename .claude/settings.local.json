@@ -1,0 +1,41 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//private/tmp/**)",
+      "Bash(curl -sL \"https://sienna-real-estate-template.webflow.io/home-v2-construction\" -o sienna.html)",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/686e7484d51b09a0303d57af/css/sienna-real-estate-template.webflow.shared.f0b411e8e.min.css\" -o sienna.css)",
+      "Bash(grep -oE '\\\\.section[^,{ ]*\\\\{[^}]*background[^}]*\\\\}' sienna.css)",
+      "Bash(grep -oE '\\\\.button[^,{ ]*\\\\{[^}]*\\\\}' sienna.css)",
+      "Bash(grep -oE '\\\\.h1[^,{]*\\\\{[^}]*\\\\}' sienna.css)",
+      "Bash(grep -oE '\\\\.heading[^,{ ]*\\\\{[^}]*font-size[^}]*\\\\}' sienna.css)",
+      "Bash(mkdir -p public/images src/components)",
+      "Bash(cp /tmp/bg_pptx/ppt/media/image1.png public/images/mesh-texture.png)",
+      "Bash(cp /tmp/bg_pptx/ppt/media/image3.jpg public/images/fire-glass-panels.jpg)",
+      "Bash(cp /tmp/bg_pptx/ppt/media/image4.png public/images/fire-test-panel.png)",
+      "Bash(cp /tmp/bg_pptx/ppt/media/image5.png public/images/glass-installation.png)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"root: %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"image: %{http_code}\\\\n\" http://localhost:5173/images/fire-glass-panels.jpg)",
+      "Bash(curl -s http://localhost:5173/)",
+      "Bash(qlmanage -t -s 1200 -o /tmp/logoprev logo.pdf)",
+      "Bash(ls -la /tmp/logoprev/)",
+      "Bash(which gs *)",
+      "Bash(sips -s format png logo.pdf --out /tmp/logo_sips.png)",
+      "Bash(ls -la /tmp/logo_sips.png)",
+      "Bash(ls -la /tmp/ql/)",
+      "Bash(python3 -c \"from PIL import Image;im=Image.open\\('/tmp/ql/logo.pdf.png'\\);print\\('QL size',im.size\\)\")",
+      "Bash(gh auth *)",
+      "Bash(gh api *)",
+      "Bash(npx vercel *)",
+      "Bash(git --version)",
+      "Bash(vercel whoami *)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Blazeguard® website — React + framer-motion rebuild of Sienna construction template *)",
+      "Bash(git branch *)"
+    ]
+  }
+}

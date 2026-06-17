@@ -1,0 +1,13 @@
+.about { background: var(--licorice); padding: clamp(90px, 13vw, 200px) 0; }
+.about__inner { display: flex; flex-direction: column; gap: 44px; }
+.about__text {
+  font-size: clamp(26px, 3.6vw, 50px);
+  line-height: 1.22;
+  max-width: 24ch;
+  font-family: var(--serif);
+  color: var(--bone);
+}
+.about__text span { display: inline; }
+@media (max-width: 700px) {
+  .about__text { max-width: none; }
+}

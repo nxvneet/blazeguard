@@ -1,0 +1,26 @@
+.testimonial { background: var(--licorice); padding: clamp(70px,10vw,160px) 0; }
+.testimonial__inner {
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.testimonial__mark {
+  font-family: var(--serif);
+  font-size: 120px;
+  line-height: 0.6;
+  color: var(--brunswick);
+  margin-bottom: 10px;
+}
+.testimonial__quote {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.4vw, 44px);
+  line-height: 1.28;
+  color: var(--bone);
+}
+.testimonial__by { margin-top: 36px; display: flex; flex-direction: column; gap: 4px; }
+.testimonial__name { font-size: 17px; color: var(--bone); }
+.testimonial__role { font-size: 14px; color: var(--text-on-dark-muted); }
