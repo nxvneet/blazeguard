@@ -44,7 +44,24 @@
       "Bash(curl -s -o /dev/null -w \"hero img: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/images/fire-glass-panels.jpg)",
       "Bash(curl -s https://blazeguard-ten.vercel.app/)",
       "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Add Blazeguard logo + fire-gradient brand palette; document live URLs *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(which ffmpeg *)",
+      "Bash(mdls -name kMDItemDurationSeconds -name kMDItemPixelWidth -name kMDItemPixelHeight -name kMDItemCodecs \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\")",
+      "Bash(python3 -c \"import AVFoundation, Quartz; print\\('pyobjc OK'\\)\")",
+      "Bash(rm -rf /tmp/vidql)",
+      "Bash(mkdir -p /tmp/vidql)",
+      "Bash(qlmanage -t -s 1400 -o /tmp/vidql \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\")",
+      "Bash(ls -la /tmp/vidql/)",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import AVFoundation; print\\('pyobjc ready'\\)\")",
+      "Bash(python3)",
+      "Bash(xxd \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\")",
+      "Bash(brew --version)",
+      "Bash(curl -sI -m 8 \"https://evermeet.cx/ffmpeg/getrelease/ffmpeg/zip\")",
+      "Bash(rm -f vf_*.png)",
+      "Bash(/tmp/ffbin/ffmpeg -i \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\")",
+      "Bash(/tmp/ffbin/ffmpeg -loglevel error -i \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\" -vf \"fps=1,scale=1280:-1\" /tmp/vf_%02d.png)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Rebuild How We Work as pinned scroll-stepper to match reference recording *)"
     ]
   }
 }
