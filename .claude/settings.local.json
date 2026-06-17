@@ -35,7 +35,16 @@
       "Bash(git init *)",
       "Bash(git add *)",
       "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Blazeguard® website — React + framer-motion rebuild of Sienna construction template *)",
-      "Bash(git branch *)"
+      "Bash(git branch *)",
+      "Bash(gh repo *)",
+      "Bash(vercel deploy *)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/)",
+      "Bash(curl -s -o /dev/null -w \"logo: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/images/blazeguard-logo-dark.png)",
+      "Bash(curl -s -o /dev/null -w \"favicon: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/favicon.svg)",
+      "Bash(curl -s -o /dev/null -w \"hero img: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/images/fire-glass-panels.jpg)",
+      "Bash(curl -s https://blazeguard-ten.vercel.app/)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Add Blazeguard logo + fire-gradient brand palette; document live URLs *)",
+      "Bash(git push *)"
     ]
   }
 }

@@ -1,5 +1,8 @@
 # Blazeguard® Website
 
+**Live:** https://blazeguard-ten.vercel.app · **Repo:** https://github.com/nxvneet/blazeguard
+
+
 A React + framer-motion rebuild of the Sienna real-estate template's
 [`home-v2-construction`](https://sienna-real-estate-template.webflow.io/home-v2-construction)
 page — every section and scroll animation recreated and populated with Blazeguard
@@ -38,6 +41,23 @@ npm run build    # production bundle in /dist
 | Silver / beige neutral | `#c1bbaf` / `#ebe3dd` |
 | Body font | Questrial (same as template) |
 | Display font | **Fraunces** — free stand-in for the template's paid **Coconat** serif |
+
+### Blazeguard brand (sampled from the logo PDF)
+
+The accent palette comes straight from the supplied logo artwork — the template's
+original green accent was replaced with the logo's fire gradient.
+
+| Token | Value |
+|-------|-------|
+| Ember red | `#cb4b40` |
+| Ember orange (primary accent) | `#cf5d3c` |
+| Amber | `#de9044` |
+| Gold | `#e6ac5a` |
+| Ink | `#1a1919` |
+
+The logo (`public/images/blazeguard-logo-dark.png` / `-light.png`) is used in the
+navbar and footer; `public/favicon.svg` is a fire-gradient lightning brand mark.
+Primary CTAs use the `.btn-fire` fire-gradient button.
 
 > The template's display typeface "Coconat" is a commercial Atipo font and can't be
 > embedded freely. **Fraunces** (Google Fonts) is used as the closest high-contrast
