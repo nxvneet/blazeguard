@@ -61,7 +61,13 @@
       "Bash(rm -f vf_*.png)",
       "Bash(/tmp/ffbin/ffmpeg -i \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\")",
       "Bash(/tmp/ffbin/ffmpeg -loglevel error -i \"/Users/navneetsingh/Downloads/5DadItT0eDfUEVr.mp4\" -vf \"fps=1,scale=1280:-1\" /tmp/vf_%02d.png)",
-      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Rebuild How We Work as pinned scroll-stepper to match reference recording *)"
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Rebuild How We Work as pinned scroll-stepper to match reference recording *)",
+      "Bash(curl -s -o /dev/null -w \"blueprint: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/images/blueprint.svg)",
+      "Bash(curl -s -o /dev/null -w \"step img: %{http_code}\\\\n\" https://blazeguard-ten.vercel.app/images/furnace-test.png)",
+      "Bash(node shot.mjs)",
+      "Bash(pkill -f \"vite preview\")",
+      "Bash(pkill -f \"npm run preview\")",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Fix How We Work section + navbar to match Sienna reference *)"
     ]
   }
 }

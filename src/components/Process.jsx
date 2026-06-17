@@ -63,109 +63,99 @@ const HEADING = 'Our Fully Engineered Fire-Protection Approach, From First Asses
 
 /* ----- Pinned scroll-stepper (desktop) — mirrors the reference recording ----- */
 function PinnedProcess() {
-  const sectionRef = useRef(null)
+  const trackRef = useRef(null)
   const { scrollYProgress } = useScroll({
-    target: sectionRef,
+    target: trackRef,
     offset: ['start start', 'end end'],
   })
 
-  const segments = STEPS.length + 1 // first segment = intro heading
+  const n = STEPS.length
   const [active, setActive] = useState(0)
-  const [intro, setIntro] = useState(true)
 
   useMotionValueEvent(scrollYProgress, 'change', (p) => {
-    const seg = p * segments
-    setIntro(seg < 0.85)
-    const idx = Math.min(STEPS.length - 1, Math.max(0, Math.floor(seg - 1)))
+    // small bias so each step "settles" near the middle of its scroll band
+    const idx = Math.min(n - 1, Math.max(0, Math.floor(p * n + 0.0001)))
     setActive(idx)
   })
 
-  // central progress line fills as steps advance
-  const lineFill = useTransform(scrollYProgress, [1 / segments, 1], [0, 1])
-  // intro heading drifts up + fades as the first step engages
-  const headY = useTransform(scrollYProgress, [0, 1 / segments], ['0%', '-30%'])
-  const headOpacity = useTransform(scrollYProgress, [0, 0.7 / segments], [1, 0])
+  // central line fills top→bottom across the whole pinned scroll
+  const lineFill = useTransform(scrollYProgress, [0, 1], [0.04, 1])
+  const nextNum = active < n - 1 ? STEPS[active + 1].n : null
 
   return (
-    <section
-      className="process dark-section rounded"
-      id="process"
-      ref={sectionRef}
-      style={{ height: `${segments * 100}vh` }}
-    >
-      <div className="process__sticky">
-        {/* intro heading */}
-        <motion.div className="process__intro" style={{ y: headY, opacity: headOpacity }}>
-          <span className="eyebrow">How We Work</span>
-          <h2 className="process__heading">{HEADING}</h2>
-        </motion.div>
+    <section className="process dark-section rounded" id="process">
+      {/* intro heading — normal flow, scrolls away before the stepper pins */}
+      <div className="process__intro container">
+        <span className="eyebrow">How We Work</span>
+        <h2 className="process__heading">{HEADING}</h2>
+      </div>
 
-        {/* stepper stage */}
-        <motion.div
-          className="process__stage"
-          animate={{ opacity: intro ? 0 : 1 }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* left: cross-fading images */}
-          <div className="process__media">
-            {STEPS.map((s, i) => (
-              <motion.div
-                className="process__img"
-                key={s.n}
-                animate={{
-                  opacity: i === active ? 1 : 0,
-                  scale: i === active ? 1 : 1.06,
-                }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                style={{ zIndex: i === active ? 2 : 1 }}
-              >
-                <img src={s.img} alt={s.title} />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* center: progress line + numbered badge */}
-          <div className="process__center">
-            <div className="process__line">
-              <motion.div className="process__line-fill" style={{ scaleY: lineFill }} />
-            </div>
-            <div className="process__badge">
+      {/* pinned scroll track */}
+      <div className="process__track" ref={trackRef} style={{ height: `${n * 100}vh` }}>
+        <div className="process__sticky">
+          <div className="process__stage container">
+            {/* left: cross-fading images */}
+            <div className="process__media">
               {STEPS.map((s, i) => (
-                <motion.span
-                  className="process__num"
+                <motion.div
+                  className="process__img"
                   key={s.n}
-                  animate={{
-                    opacity: i === active ? 1 : 0,
-                    y: i === active ? 0 : i < active ? -24 : 24,
-                  }}
-                  transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  initial={false}
+                  animate={{ opacity: i === active ? 1 : 0, scale: i === active ? 1 : 1.05 }}
+                  transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  style={{ zIndex: i === active ? 2 : 1 }}
                 >
-                  {s.n}
-                </motion.span>
+                  <img src={s.img} alt={s.title} />
+                </motion.div>
               ))}
             </div>
-          </div>
 
-          {/* right: cross-fading text over blueprint watermark */}
-          <div className="process__text">
-            <img className="process__blueprint" src="/images/blueprint.svg" alt="" aria-hidden="true" />
-            {STEPS.map((s, i) => (
-              <motion.div
-                className="process__copy"
-                key={s.n}
-                animate={{
-                  opacity: i === active ? 1 : 0,
-                  y: i === active ? 0 : 20,
-                }}
-                transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                style={{ pointerEvents: i === active ? 'auto' : 'none' }}
-              >
-                <h3 className="process__title">{s.title}</h3>
-                <p className="process__body">{s.body}</p>
-              </motion.div>
-            ))}
+            {/* center: progress line + numbered badge (+ ghost next marker) */}
+            <div className="process__center">
+              <div className="process__line">
+                <motion.div className="process__line-fill" style={{ scaleY: lineFill }} />
+              </div>
+              <div className="process__badge">
+                {STEPS.map((s, i) => (
+                  <motion.span
+                    className="process__num"
+                    key={s.n}
+                    initial={false}
+                    animate={{
+                      opacity: i === active ? 1 : 0,
+                      y: i === active ? 0 : i < active ? -26 : 26,
+                    }}
+                    transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {s.n}
+                  </motion.span>
+                ))}
+              </div>
+              {nextNum && <div className="process__ghost">{nextNum}</div>}
+            </div>
+
+            {/* right: cross-fading text over blueprint watermark */}
+            <div className="process__text">
+              <img className="process__blueprint" src="/images/blueprint.svg" alt="" aria-hidden="true" />
+              <div className="process__copy-wrap">
+                {STEPS.map((s, i) => (
+                  <motion.div
+                    className="process__copy"
+                    key={s.n}
+                    initial={false}
+                    animate={{ opacity: i === active ? 1 : 0, y: i === active ? 0 : 24 }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    style={{ pointerEvents: i === active ? 'auto' : 'none' }}
+                  >
+                    <span className="process__step-label">Step {s.n} / {STEPS[n - 1].n}</span>
+                    <h3 className="process__title">{s.title}</h3>
+                    <p className="process__body">{s.body}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
