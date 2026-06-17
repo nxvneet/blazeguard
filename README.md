@@ -2,6 +2,19 @@
 
 **Live:** https://blazeguard-ten.vercel.app · **Repo:** https://github.com/nxvneet/blazeguard
 
+## Two versions (floating V1 / V2 switch)
+
+The site ships **two complete designs**, toggled by a floating **V1 / V2** tab
+at the bottom of the screen (choice persists in `localStorage`; also linkable via
+`?v=1` / `?v=2`):
+
+- **V1** — dark editorial layout modelled on the *Sienna* template (`src/components/`, assembled in `src/V1.jsx`).
+- **V2** — modern layout modelled on the *Proforma* template (`src/v2/`, assembled in `src/v2/V2.jsx`): Poppins/Inter, fire-red accent, hero → intro → cert marquee → services accordion → advantage cards → projects → red split panels → FAQ → team → reviews → blog → CTA → giant-wordmark footer.
+
+Both share the Blazeguard logo and the fire palette sampled from the logo. V2's
+hero and architectural feature images were generated at 2K and optimised to crisp,
+web-fast JPGs.
+
 
 A React + framer-motion rebuild of the Sienna real-estate template's
 [`home-v2-construction`](https://sienna-real-estate-template.webflow.io/home-v2-construction)

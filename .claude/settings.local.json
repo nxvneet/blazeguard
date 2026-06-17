@@ -67,7 +67,23 @@
       "Bash(node shot.mjs)",
       "Bash(pkill -f \"vite preview\")",
       "Bash(pkill -f \"npm run preview\")",
-      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Fix How We Work section + navbar to match Sienna reference *)"
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Fix How We Work section + navbar to match Sienna reference *)",
+      "Bash(curl -sL \"https://proforma-db.webflow.io/\" -o proforma.html)",
+      "Bash(curl -sL \"https://cdn.prod.website-files.com/67409478e7d06cee556594cb/css/proforma-db.webflow.shared.90198ef82.css\" -o proforma.css)",
+      "Bash(grep -oiE 'family.{0,80}' proforma.html)",
+      "Bash(node pf_shot.mjs)",
+      "mcp__claude_ai_Higgsfield__balance",
+      "mcp__claude_ai_Higgsfield__generate_image",
+      "mcp__claude_ai_Higgsfield__job_status",
+      "Bash(curl -sL \"https://d8j0ntlcm91z4.cloudfront.net/user_31UwwC0KJT8Rhl1OzvrN5oflnHe/hf_20260617_143843_5b2adc43-041e-4e0b-b8a2-867a3abff1a7.png\" -o public/images/v2-hero.png)",
+      "Bash(python3 -c \"from PIL import Image;print\\('hero',Image.open\\('public/images/v2-hero.png'\\).size\\)\")",
+      "Bash(curl -sL \"https://d8j0ntlcm91z4.cloudfront.net/user_31UwwC0KJT8Rhl1OzvrN5oflnHe/hf_20260617_143856_022bfc2b-d06f-4c13-8f15-6b1808bff1a9.png\" -o public/images/v2-facade.png)",
+      "Bash(python3 -c \"from PIL import Image;print\\('facade',Image.open\\('public/images/v2-facade.png'\\).size\\)\")",
+      "Bash(curl -sL \"https://d8j0ntlcm91z4.cloudfront.net/user_31UwwC0KJT8Rhl1OzvrN5oflnHe/hf_20260617_144128_a7ae211d-bf95-41d1-ba42-c6978f173d12.png\" -o public/images/v2-interior.png)",
+      "Bash(python3 -c \"from PIL import Image;print\\('interior',Image.open\\('public/images/v2-interior.png'\\).size\\)\")",
+      "Bash(rm -f /tmp/v2_*.png)",
+      "Bash(node /tmp/v2_shot.mjs)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Add V2 design \\(Proforma-modelled\\) with floating V1/V2 switch *)"
     ]
   }
 }

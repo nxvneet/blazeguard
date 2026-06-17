@@ -1,0 +1,39 @@
+.vswitch {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 100px;
+  background: rgba(13, 11, 13, 0.78);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 44px -14px rgba(0, 0, 0, 0.7);
+}
+.vswitch__tab {
+  position: relative;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 58px;
+  height: 38px;
+  border-radius: 100px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: 'Poppins', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
+}
+.vswitch__tab.is-active { color: #fff; }
+.vswitch__label { position: relative; z-index: 2; }
+.vswitch__pill {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  background: linear-gradient(95deg, #cb4b40, #cf5d3c 50%, #de9044);
+  z-index: 1;
+}

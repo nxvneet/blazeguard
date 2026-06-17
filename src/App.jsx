@@ -1,31 +1,31 @@
-import Navbar from './components/Navbar.jsx'
-import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
-import Stats from './components/Stats.jsx'
-import Process from './components/Process.jsx'
-import Services from './components/Services.jsx'
-import Testimonial from './components/Testimonial.jsx'
-import Projects from './components/Projects.jsx'
-import Stories from './components/Stories.jsx'
-import CTA from './components/CTA.jsx'
-import Footer from './components/Footer.jsx'
+import { useEffect, useState } from 'react'
+import V1 from './V1.jsx'
+import V2 from './v2/V2.jsx'
+import VersionSwitch from './components/VersionSwitch.jsx'
+
+function getInitialVersion() {
+  const url = new URL(window.location.href)
+  const q = url.searchParams.get('v') || (url.hash === '#v2' ? '2' : url.hash === '#v1' ? '1' : null)
+  if (q === '2') return 'v2'
+  if (q === '1') return 'v1'
+  return localStorage.getItem('bg-version') || 'v1'
+}
 
 export default function App() {
+  const [version, setVersion] = useState(getInitialVersion)
+
+  useEffect(() => {
+    localStorage.setItem('bg-version', version)
+    const url = new URL(window.location.href)
+    url.searchParams.set('v', version === 'v2' ? '2' : '1')
+    window.history.replaceState({}, '', url)
+    window.scrollTo(0, 0)
+  }, [version])
+
   return (
     <>
-      <Navbar />
-      <main>
-        <Hero />
-        <About />
-        <Stats />
-        <Process />
-        <Services />
-        <Testimonial />
-        <Projects />
-        <Stories />
-        <CTA />
-      </main>
-      <Footer />
+      {version === 'v2' ? <V2 /> : <V1 />}
+      <VersionSwitch version={version} onChange={setVersion} />
     </>
   )
 }
