@@ -83,7 +83,12 @@
       "Bash(python3 -c \"from PIL import Image;print\\('interior',Image.open\\('public/images/v2-interior.png'\\).size\\)\")",
       "Bash(rm -f /tmp/v2_*.png)",
       "Bash(node /tmp/v2_shot.mjs)",
-      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Add V2 design \\(Proforma-modelled\\) with floating V1/V2 switch *)"
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Add V2 design \\(Proforma-modelled\\) with floating V1/V2 switch *)",
+      "Bash(curl -s -o /dev/null -w \"home \\(v1\\): %{http_code}\\\\n\" \"https://blazeguard-ten.vercel.app/\")",
+      "Bash(curl -s -o /dev/null -w \"v2 url: %{http_code}\\\\n\" \"https://blazeguard-ten.vercel.app/?v=2\")",
+      "Bash(curl -s -o /dev/null -w \"v2 hero jpg: %{http_code}  size: %{size_download} bytes\\\\n\" \"https://blazeguard-ten.vercel.app/images/v2-hero.jpg\")",
+      "Bash(curl -s -o /dev/null -w \"v2 facade: %{http_code}\\\\n\" \"https://blazeguard-ten.vercel.app/images/v2-facade.jpg\")",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V2: improve section-title spacing \\(more breathing room below headings\\) *)"
     ]
   }
 }
