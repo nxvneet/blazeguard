@@ -4,7 +4,6 @@
   position: sticky; top: 0;
   height: 100vh;
   overflow: hidden;
-  display: flex; flex-direction: column;
 }
 
 .anatomy__grid-bg {
@@ -13,78 +12,66 @@
     linear-gradient(rgba(235,227,221,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(235,227,221,0.04) 1px, transparent 1px);
   background-size: 46px 46px;
-  mask-image: radial-gradient(ellipse 85% 80% at 50% 55%, #000 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 62%, #000 35%, transparent 100%);
 }
 .anatomy__glow {
   position: absolute; z-index: 0;
-  left: 50%; top: 58%; transform: translate(-50%, -50%);
-  width: 64vw; height: 56vh;
+  left: 50%; top: 64%; transform: translate(-50%, -50%);
+  width: 60vw; height: 52vh;
   background: radial-gradient(ellipse at center, rgba(207,93,60,0.45), rgba(207,93,60,0.1) 48%, transparent 72%);
   filter: blur(20px);
 }
 .anatomy__guides { position: absolute; inset: 0; z-index: 0; }
 .anatomy__guides span {
   position: absolute; top: 0; bottom: 0; width: 1px;
-  background: repeating-linear-gradient(to bottom, rgba(235,227,221,0.12) 0 6px, transparent 6px 14px);
+  background: repeating-linear-gradient(to bottom, rgba(235,227,221,0.1) 0 6px, transparent 6px 14px);
 }
 .anatomy__guides span:nth-child(1) { left: 14%; }
 .anatomy__guides span:nth-child(2) { left: 37%; }
 .anatomy__guides span:nth-child(3) { left: 63%; }
 .anatomy__guides span:nth-child(4) { left: 86%; }
 
-/* heading sits at the top, centered */
+/* heading band — top of the section only, with a soft backdrop for legibility */
 .anatomy__head {
-  position: relative; z-index: 3;
-  padding-top: clamp(90px, 13vh, 150px);
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  z-index: 3;
+  width: 100%;
+  padding-top: clamp(86px, 12vh, 132px);
   text-align: center;
   display: flex; flex-direction: column; align-items: center;
+  background: linear-gradient(to bottom, var(--licorice-darker) 24%, rgba(7,5,4,0.72) 62%, transparent 100%);
+  padding-bottom: 56px;
 }
-.anatomy__head .eyebrow { color: var(--silver); margin-bottom: 22px; }
+.anatomy__head .eyebrow { color: var(--silver); margin-bottom: 18px; }
 .anatomy__title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(30px, 4.4vw, 62px);
-  line-height: 1.05;
+  font-size: clamp(28px, 3.4vw, 50px);
+  line-height: 1.06;
   color: var(--bone);
-  max-width: 18ch;
+  max-width: 22ch;
 }
-.anatomy__lead { margin-top: 20px; max-width: 56ch; color: var(--text-on-dark-muted); font-size: 17px; }
+.anatomy__lead { margin-top: 16px; max-width: 52ch; color: var(--text-on-dark-muted); font-size: 16px; line-height: 1.6; }
 
-/* diagram fills the remaining space */
-.anatomy__diagram {
+/* diagram stage — fills the area below the heading band (clear of the callouts) */
+.anatomy__stage {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  left: 0; right: 0;
+  top: clamp(258px, 34vh, 340px);
+  bottom: clamp(16px, 3vh, 40px);
   z-index: 1;
-  overflow: visible;
 }
+.anatomy__diagram { width: 100%; height: 100%; overflow: visible; }
 .bp-label { font-family: var(--sans); font-size: 15px; letter-spacing: 0.01em; fill: var(--text-on-dark); }
-
-.anatomy__caption {
-  position: absolute;
-  right: clamp(20px, 5vw, 64px);
-  bottom: clamp(36px, 7vh, 80px);
-  z-index: 3;
-  max-width: 320px;
-  text-align: right;
-}
-.anatomy__caption-tag {
-  display: inline-block;
-  font-family: var(--sans);
-  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ember); margin-bottom: 12px;
-}
-.anatomy__caption p { color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.6; }
 
 /* mobile: static stacked layout, no pin */
 @media (max-width: 860px) {
-  .anatomy__sticky { position: static; height: auto; padding-bottom: 40px; }
-  .anatomy__diagram { position: relative; height: 52vh; margin-top: 10px; }
-  .anatomy__head { padding-top: clamp(70px, 10vh, 110px); }
-  .anatomy__caption {
-    position: relative; right: auto; bottom: auto; text-align: center;
-    margin: 8px auto 0; max-width: none; padding: 0 clamp(20px,5vw,60px);
+  .anatomy__sticky { position: static; height: auto; padding-bottom: 36px; }
+  .anatomy__head {
+    position: relative; transform: none; left: auto;
+    background: none; padding-bottom: 8px; padding-top: clamp(64px, 9vh, 100px);
   }
-  .bp-label { font-size: 17px; }
+  .anatomy__stage { position: relative; top: auto; bottom: auto; height: 56vh; margin-top: 8px; }
+  .bp-label { font-size: 18px; }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { motion, useScroll, useTransform, useMotionValue } from 'framer-motion'
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion'
 import './Anatomy.css'
 
 /* -------- exploded fire-glass assembly geometry (isometric slab) -------- */
@@ -14,10 +14,10 @@ const SIDE = `M${P(TR)} L${P(BR)} L${P([BR[0] + TX, BR[1] + TY])} L${P([TR[0] + 
 
 const LAYERS = [
   { tint: 'rgba(193,187,175,0.06)', frame: true, label: 'Steel glazing frame', mk: [250, 470], lead: 'M250,470 L250,584 L268,584', tx: 274, ty: 588 },
-  { tint: 'rgba(120,158,170,0.07)', label: 'Toughened outer pane', mk: [302, 178], lead: 'M302,178 L302,96 L320,96', tx: 326, ty: 100 },
+  { tint: 'rgba(120,158,170,0.07)', label: 'Toughened outer pane', mk: [302, 178], lead: 'M302,178 L302,132 L320,132', tx: 326, ty: 136 },
   { tint: 'rgba(207,93,60,0.10)', hatch: true, label: 'Intumescent interlayer', mk: [268, 430], lead: 'M268,430 L268,624 L286,624', tx: 292, ty: 628 },
   { tint: 'rgba(120,158,170,0.05)', label: null },
-  { tint: 'rgba(120,158,170,0.07)', grid: true, label: 'Laminated inner pane', mk: [298, 196], lead: 'M298,196 L298,128 L316,128', tx: 322, ty: 132 },
+  { tint: 'rgba(120,158,170,0.07)', grid: true, label: 'Laminated inner pane', mk: [298, 196], lead: 'M298,196 L298,158 L316,158', tx: 322, ty: 162 },
   { tint: 'rgba(193,187,175,0.06)', label: 'EI-rated edge seal', mk: [256, 452], lead: 'M256,452 L256,664 L274,664', tx: 280, ty: 668 },
 ]
 
@@ -85,40 +85,37 @@ export default function Anatomy() {
   const isMobile = useMediaQuery('(max-width: 860px)')
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
   const mobileP = useMotionValue(0.64)
-  const progress = isMobile ? mobileP : scrollYProgress
+  // spring-smoothed scroll progress so the explosion glides instead of tracking 1:1
+  const smooth = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 })
+  const progress = isMobile ? mobileP : smooth
 
-  const headOpacity = useTransform(scrollYProgress, [0, 0.12, 0.9, 1], [0.55, 1, 1, 0.7])
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.5, 1], [0.28, 0.42, 0.28])
-  const captionOpacity = useTransform(scrollYProgress, [0.62, 0.8], [0, 1])
+  const glowOpacity = useTransform(progress, [0, 0.5, 1], [0.22, 0.4, 0.26])
 
   return (
-    <section className="anatomy" id="anatomy" ref={ref} style={{ height: isMobile ? 'auto' : '300vh' }}>
+    <section className="anatomy" id="anatomy" ref={ref} style={{ height: isMobile ? 'auto' : '260vh' }}>
       <div className="anatomy__sticky">
         <div className="anatomy__grid-bg" aria-hidden="true" />
-        <motion.div className="anatomy__glow" style={{ opacity: isMobile ? 0.34 : glowOpacity }} aria-hidden="true" />
+        <motion.div className="anatomy__glow" style={{ opacity: isMobile ? 0.32 : glowOpacity }} aria-hidden="true" />
         <div className="anatomy__guides" aria-hidden="true"><span /><span /><span /><span /></div>
 
-        {/* heading */}
-        <motion.div className="anatomy__head container" style={{ opacity: isMobile ? 1 : headOpacity }}>
+        {/* heading — confined to a top band, never over the diagram */}
+        <div className="anatomy__head container">
           <span className="eyebrow">Engineered in layers</span>
           <h2 className="anatomy__title">The anatomy of an EI-90 pane</h2>
           <p className="anatomy__lead">
             Every Blazeguard unit is a precision laminate — toughened glass bonded to intumescent
-            interlayers that turn opaque and insulate under fire. Scroll to take it apart.
+            interlayers that turn opaque and insulate under fire.
           </p>
-        </motion.div>
+        </div>
 
-        {/* exploded diagram */}
-        <svg className="anatomy__diagram" viewBox="0 0 1180 740" preserveAspectRatio="xMidYMid meet" aria-label="Exploded view of a fire-resistant glass assembly">
-          {LAYERS.map((d, i) => (
-            <BlueprintLayer key={i} progress={progress} i={i} data={d} />
-          ))}
-        </svg>
-
-        <motion.div className="anatomy__caption" style={{ opacity: isMobile ? 1 : captionOpacity }}>
-          <span className="anatomy__caption-tag">Exploded view</span>
-          <p>Toughened panes · intumescent interlayers · EI-rated edge seal · steel frame — certified to 90 minutes.</p>
-        </motion.div>
+        {/* exploded diagram — lives in the lower region */}
+        <div className="anatomy__stage">
+          <svg className="anatomy__diagram" viewBox="0 0 1180 740" preserveAspectRatio="xMidYMid meet" aria-label="Exploded view of a fire-resistant glass assembly">
+            {LAYERS.map((d, i) => (
+              <BlueprintLayer key={i} progress={progress} i={i} data={d} />
+            ))}
+          </svg>
+        </div>
       </div>
     </section>
   )
