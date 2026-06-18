@@ -88,7 +88,11 @@
       "Bash(curl -s -o /dev/null -w \"v2 url: %{http_code}\\\\n\" \"https://blazeguard-ten.vercel.app/?v=2\")",
       "Bash(curl -s -o /dev/null -w \"v2 hero jpg: %{http_code}  size: %{size_download} bytes\\\\n\" \"https://blazeguard-ten.vercel.app/images/v2-hero.jpg\")",
       "Bash(curl -s -o /dev/null -w \"v2 facade: %{http_code}\\\\n\" \"https://blazeguard-ten.vercel.app/images/v2-facade.jpg\")",
-      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V2: improve section-title spacing \\(more breathing room below headings\\) *)"
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V2: improve section-title spacing \\(more breathing room below headings\\) *)",
+      "Bash(pkill -f \"Google Chrome\")",
+      "Bash(sed 's#/tmp/bg_chrome_profile#/tmp/bg_chrome_profile2#' /tmp/hero_shot.mjs)",
+      "Bash(node /tmp/hero_shot2.mjs)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V1 hero: replace photo with scroll-driven exploded blueprint of the fire-glass assembly *)"
     ]
   }
 }
