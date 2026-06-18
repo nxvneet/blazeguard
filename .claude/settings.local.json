@@ -95,7 +95,8 @@
       "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V1 hero: replace photo with scroll-driven exploded blueprint of the fire-glass assembly *)",
       "Bash(curl -sL \"https://d8j0ntlcm91z4.cloudfront.net/user_31UwwC0KJT8Rhl1OzvrN5oflnHe/hf_20260618_074925_43d049fe-12db-434b-9b3a-f57874a40c9a.png\" -o /tmp/v1hero.png)",
       "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'V1: move exploded blueprint to its own Anatomy section; new hero image *)",
-      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Anatomy: fix heading/diagram overlap + smoother scroll explosion *)"
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Anatomy: fix heading/diagram overlap + smoother scroll explosion *)",
+      "Bash(git -c user.name=nxvneet -c user.email=chirag.defygraphics@gmail.com commit -q -m 'Widen About + V2 intro statement paragraphs to fill the line \\(reduce right negative space\\) *)"
     ]
   }
 }

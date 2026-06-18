@@ -37,7 +37,7 @@
 
 /* ===================== INTRO ===================== */
 .v2intro { background: var(--pp-dark); }
-.v2intro__text { color: #fff; font-size: clamp(24px, 3.4vw, 46px); line-height: 1.28; letter-spacing: -0.02em; max-width: 22ch; }
+.v2intro__text { color: #fff; font-size: clamp(24px, 3.4vw, 46px); line-height: 1.28; letter-spacing: -0.02em; max-width: 40ch; }
 
 /* ===================== LOGOS MARQUEE ===================== */
 .v2logos { background: var(--pp-light); padding: 26px 0; overflow: hidden; border-top: 1px solid rgba(0,0,0,0.06); }
