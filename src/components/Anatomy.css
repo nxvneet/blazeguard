@@ -1,0 +1,90 @@
+/* ===== Anatomy — scroll-driven exploded fire-glass blueprint (own section) ===== */
+.anatomy { position: relative; background: var(--licorice-darker); z-index: 2; }
+.anatomy__sticky {
+  position: sticky; top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+
+.anatomy__grid-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(235,227,221,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(235,227,221,0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse 85% 80% at 50% 55%, #000 35%, transparent 100%);
+}
+.anatomy__glow {
+  position: absolute; z-index: 0;
+  left: 50%; top: 58%; transform: translate(-50%, -50%);
+  width: 64vw; height: 56vh;
+  background: radial-gradient(ellipse at center, rgba(207,93,60,0.45), rgba(207,93,60,0.1) 48%, transparent 72%);
+  filter: blur(20px);
+}
+.anatomy__guides { position: absolute; inset: 0; z-index: 0; }
+.anatomy__guides span {
+  position: absolute; top: 0; bottom: 0; width: 1px;
+  background: repeating-linear-gradient(to bottom, rgba(235,227,221,0.12) 0 6px, transparent 6px 14px);
+}
+.anatomy__guides span:nth-child(1) { left: 14%; }
+.anatomy__guides span:nth-child(2) { left: 37%; }
+.anatomy__guides span:nth-child(3) { left: 63%; }
+.anatomy__guides span:nth-child(4) { left: 86%; }
+
+/* heading sits at the top, centered */
+.anatomy__head {
+  position: relative; z-index: 3;
+  padding-top: clamp(90px, 13vh, 150px);
+  text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+}
+.anatomy__head .eyebrow { color: var(--silver); margin-bottom: 22px; }
+.anatomy__title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 4.4vw, 62px);
+  line-height: 1.05;
+  color: var(--bone);
+  max-width: 18ch;
+}
+.anatomy__lead { margin-top: 20px; max-width: 56ch; color: var(--text-on-dark-muted); font-size: 17px; }
+
+/* diagram fills the remaining space */
+.anatomy__diagram {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  overflow: visible;
+}
+.bp-label { font-family: var(--sans); font-size: 15px; letter-spacing: 0.01em; fill: var(--text-on-dark); }
+
+.anatomy__caption {
+  position: absolute;
+  right: clamp(20px, 5vw, 64px);
+  bottom: clamp(36px, 7vh, 80px);
+  z-index: 3;
+  max-width: 320px;
+  text-align: right;
+}
+.anatomy__caption-tag {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ember); margin-bottom: 12px;
+}
+.anatomy__caption p { color: var(--text-on-dark-muted); font-size: 14px; line-height: 1.6; }
+
+/* mobile: static stacked layout, no pin */
+@media (max-width: 860px) {
+  .anatomy__sticky { position: static; height: auto; padding-bottom: 40px; }
+  .anatomy__diagram { position: relative; height: 52vh; margin-top: 10px; }
+  .anatomy__head { padding-top: clamp(70px, 10vh, 110px); }
+  .anatomy__caption {
+    position: relative; right: auto; bottom: auto; text-align: center;
+    margin: 8px auto 0; max-width: none; padding: 0 clamp(20px,5vw,60px);
+  }
+  .bp-label { font-size: 17px; }
+}

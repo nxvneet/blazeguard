@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
+import Anatomy from './components/Anatomy.jsx'
 import Stats from './components/Stats.jsx'
 import Process from './components/Process.jsx'
 import Services from './components/Services.jsx'
@@ -18,6 +19,7 @@ export default function V1() {
       <main>
         <Hero />
         <About />
+        <Anatomy />
         <Stats />
         <Process />
         <Services />
