@@ -36,8 +36,8 @@
   --text-on-light-muted: #5d5650;
 
   /* type */
-  --serif: 'Fraunces', 'Times New Roman', serif;
-  --sans: 'Questrial', Arial, sans-serif;
+  --serif: 'Geist', system-ui, sans-serif; /* headings */
+  --sans: 'Inter', system-ui, sans-serif;  /* body */
 
   /* rhythm */
   --section-pad: clamp(80px, 12vw, 200px);

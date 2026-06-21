@@ -21,8 +21,8 @@
   --pp-gold: #e6ac5a;
   --pp-fire: linear-gradient(100deg, #cb4b40, #cf5d3c 48%, #de9044 86%);
 
-  --pp-sans: 'Poppins', system-ui, sans-serif;
-  --pp-alt: 'Inter', system-ui, sans-serif;
+  --pp-sans: 'Geist', system-ui, sans-serif; /* headings / display / UI */
+  --pp-alt: 'Inter', system-ui, sans-serif;  /* body */
   --pp-radius: 18px;
   --pp-container: 1320px;
 
